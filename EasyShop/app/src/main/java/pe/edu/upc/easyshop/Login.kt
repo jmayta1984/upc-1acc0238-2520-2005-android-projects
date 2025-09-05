@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,10 +26,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import pe.edu.upc.easyshop.ui.theme.EasyShopTheme
 
 @Composable
-fun Login() {
+fun Login(onLogin: () -> Unit) {
     val email = remember {
         mutableStateOf("")
     }
@@ -40,8 +44,10 @@ fun Login() {
         mutableStateOf(false)
     }
 
-    Column(modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+    ) {
         OutlinedTextField(
             value = email.value,
             onValueChange = {
@@ -56,7 +62,9 @@ fun Login() {
                     contentDescription = null
                 )
             },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
 
         OutlinedTextField(
@@ -80,7 +88,11 @@ fun Login() {
                     }
                 ) {
                     Icon(
-                        Icons.Default.Done,
+                        if (isVisible.value) {
+                            Icons.Default.Visibility
+                        } else {
+                            Icons.Default.VisibilityOff
+                        },
                         contentDescription = null
                     )
                 }
@@ -90,12 +102,18 @@ fun Login() {
             } else {
                 PasswordVisualTransformation()
             },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
 
         )
 
         Button(
-            onClick = {}
+            onClick = onLogin,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+
         ) {
             Text("Login")
         }
@@ -105,8 +123,10 @@ fun Login() {
 @Preview
 @Composable
 fun LoginPreview() {
-    EasyShopTheme(dynamicColor = false) {
-        Login()
+    EasyShopTheme {
+        Login {
+
+        }
     }
 
 }
