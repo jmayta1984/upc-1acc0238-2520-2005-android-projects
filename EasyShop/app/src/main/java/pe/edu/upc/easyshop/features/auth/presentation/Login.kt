@@ -21,10 +21,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pe.edu.upc.easyshop.R
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 
 @Composable
@@ -51,7 +53,7 @@ fun Login(onLogin: () -> Unit) {
                 email.value = it
             },
             placeholder = {
-                Text(text = "Email")
+                Text(text = stringResource(R.string.placeholder_email))
             },
             leadingIcon = {
                 Icon(
@@ -70,7 +72,7 @@ fun Login(onLogin: () -> Unit) {
                 password = it
             },
             placeholder = {
-                Text(text = "Password")
+                Text(text = stringResource(R.string.placeholder_password))
             },
             leadingIcon = {
                 Icon(

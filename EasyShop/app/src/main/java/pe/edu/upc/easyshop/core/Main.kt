@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
+import pe.edu.upc.easyshop.features.home.presentation.Home
 
 
 data class Tab(
@@ -29,7 +30,7 @@ data class Tab(
 )
 
 @Composable
-fun Main() {
+fun Main(onClick: () -> Unit) {
 
     val selectedIndex = remember {
         mutableIntStateOf(0)
@@ -66,10 +67,12 @@ fun Main() {
         }
     ) { paddingValues ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(paddingValues),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
             verticalArrangement = Arrangement.Center
         ) {
-
+            Home(onClick)
         }
     }
 }
@@ -78,6 +81,6 @@ fun Main() {
 @Composable
 fun MainPreview() {
     EasyShopTheme {
-        Main()
+        Main{}
     }
 }

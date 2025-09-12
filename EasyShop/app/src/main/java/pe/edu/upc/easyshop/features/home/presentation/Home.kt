@@ -6,14 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -40,17 +38,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.edu.upc.easyshop.R
+import pe.edu.upc.easyshop.core.ui.components.CustomSpacer
+import pe.edu.upc.easyshop.core.ui.components.ProductCard
+import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
+import pe.edu.upc.easyshop.shared.models.products
 
 @Composable
-fun Home() {
+fun Home(onClick: () -> Unit) {
 
     val categories = listOf(
         Category.All,
@@ -122,7 +124,7 @@ fun Home() {
                     )
                 },
                 placeholder = {
-                    Text("Search")
+                    Text(stringResource(R.string.placeholder_search))
                 },
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.weight(1f)
@@ -140,12 +142,12 @@ fun Home() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Categories",
+                stringResource(R.string.label_categories),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.weight(1f)
             )
-            TextButton(onClick = {}) { Text("See all") }
+            TextButton(onClick = {}) { Text(stringResource(R.string.button_see_all)) }
         }
 
         LazyRow {
@@ -218,49 +220,25 @@ fun Home() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Popular",
+                stringResource(R.string.label_popular),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.weight(1f)
             )
-            TextButton(onClick = {}) { Text("See all") }
+            TextButton(onClick = {}) { Text(stringResource(R.string.button_see_all)) }
         }
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2)
         ) {
-            items(categories){ category ->
-
+            items(products) { product ->
+                ProductCard(product, onClick)
 
             }
         }
     }
 }
 
-@Composable
-fun CustomSpacer() {
-    Spacer(modifier = Modifier.width(8.dp))
-}
-
-
-@Composable
-fun RoundedIcon(icon: ImageVector) {
-    Box(
-        modifier = Modifier
-            .size(48.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(MaterialTheme.colorScheme.surfaceContainer)
-    ) {
-        Icon(
-            icon,
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-
-            )
-    }
-}
 
 sealed class Category(val label: String) {
     object All : Category("All")
@@ -274,7 +252,7 @@ sealed class Category(val label: String) {
 @Composable
 fun HomePreview() {
     EasyShopTheme {
-        Home()
+        Home{}
     }
 
 }
