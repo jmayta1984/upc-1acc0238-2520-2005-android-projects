@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop
+package pe.edu.upc.easyshop.features.home.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,7 +26,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -47,7 +46,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pe.edu.upc.easyshop.ui.theme.EasyShopTheme
+import pe.edu.upc.easyshop.R
+import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 
 @Composable
 fun Home() {
