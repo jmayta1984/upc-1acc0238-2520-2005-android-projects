@@ -1,5 +1,6 @@
 package pe.edu.upc.easyshop.core
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -20,7 +21,13 @@ fun AppNav() {
         }
 
         composable("main") {
-            Main()
+            Main{
+                navNavController.navigate("product")
+            }
+        }
+
+        composable("product") {
+            Text("Product")
         }
     }
 
