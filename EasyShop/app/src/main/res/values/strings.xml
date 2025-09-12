@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EasyShop</string>
+    <string name="label_categories">Categories</string>
+    <string name="label_popular">Popular</string>
+    <string name="button_see_all">See all</string>
+    <string name="placeholder_search">Search</string>
+    <string name="placeholder_email">Email</string>
+    <string name="placeholder_password">Password</string>
+
 </resources>
