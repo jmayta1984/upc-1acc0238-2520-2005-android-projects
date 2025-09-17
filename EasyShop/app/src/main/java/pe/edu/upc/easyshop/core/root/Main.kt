@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.core
+package pe.edu.upc.easyshop.core.root
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
-import pe.edu.upc.easyshop.features.home.presentation.Home
+import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
+import pe.edu.upc.easyshop.features.home.presentation.views.Home
 
 
 data class Tab(
@@ -72,7 +73,7 @@ fun Main(onClick: () -> Unit) {
                 .padding(paddingValues),
             verticalArrangement = Arrangement.Center
         ) {
-            Home(onClick)
+            Home(getHomeViewModel(),onClick)
         }
     }
 }

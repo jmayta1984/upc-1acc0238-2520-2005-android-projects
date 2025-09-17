@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.presentation
+package pe.edu.upc.easyshop.features.home.presentation.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,6 +32,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -49,10 +50,14 @@ import pe.edu.upc.easyshop.core.ui.components.CustomSpacer
 import pe.edu.upc.easyshop.core.ui.components.ProductCard
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
+import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
+import pe.edu.upc.easyshop.features.home.presentation.viewmodels.HomeViewModel
 import pe.edu.upc.easyshop.shared.models.products
 
 @Composable
-fun Home(onClick: () -> Unit) {
+fun Home(
+    viewModel: HomeViewModel,
+    onClick: () -> Unit) {
 
     val categories = listOf(
         Category.All,
@@ -61,6 +66,9 @@ fun Home(onClick: () -> Unit) {
         Category.Girls,
         Category.Boys
     )
+
+    val products = viewModel.products.collectAsState()
+    viewModel.getAllProducts()
 
     val selectedCategory = remember {
         mutableStateOf<Category>(Category.All)
@@ -231,7 +239,7 @@ fun Home(onClick: () -> Unit) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2)
         ) {
-            items(products) { product ->
+            items(products.value) { product ->
                 ProductCard(product, onClick)
 
             }
@@ -252,7 +260,7 @@ sealed class Category(val label: String) {
 @Composable
 fun HomePreview() {
     EasyShopTheme {
-        Home{}
+        Home(getHomeViewModel()){}
     }
 
 }
