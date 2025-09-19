@@ -14,20 +14,20 @@ import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 fun AppNav() {
 
     val navNavController = rememberNavController()
-    NavHost(navNavController, startDestination = "login") {
-        composable("login") {
+    NavHost(navNavController, startDestination = Routes.Login.route) {
+        composable(Routes.Login.route) {
             Login {
-                navNavController.navigate("main")
+                navNavController.navigate(Routes.Main.route)
             }
         }
 
-        composable("main") {
+        composable(Routes.Main.route) {
             Main {
-                navNavController.navigate("product")
+                navNavController.navigate(Routes.ProductDetail.route)
             }
         }
 
-        composable("product") {
+        composable(Routes.ProductDetail.route) {
             Text("Product")
         }
     }
