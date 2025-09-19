@@ -7,16 +7,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import pe.edu.upc.easyshop.core.root.Main
-import pe.edu.upc.easyshop.features.auth.presentation.Login
+import pe.edu.upc.easyshop.features.auth.presentation.views.Login
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
+import pe.edu.upc.easyshop.features.auth.presentation.di.PresentationModule.getLoginViewModel
 
 @Composable
 fun AppNav() {
 
     val navNavController = rememberNavController()
+
+
     NavHost(navNavController, startDestination = Routes.Login.route) {
         composable(Routes.Login.route) {
-            Login {
+            Login(getLoginViewModel()) {
                 navNavController.navigate(Routes.Main.route)
             }
         }
