@@ -1,7 +1,5 @@
 package pe.edu.upc.easyshop.features.home.data.remote.models
 
-import pe.edu.upc.easyshop.shared.models.Product
-
 data class ProductDto(
     val availabilityStatus: String,
     val brand: String,
