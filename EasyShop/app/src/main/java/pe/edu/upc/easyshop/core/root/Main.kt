@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
-import pe.edu.upc.easyshop.features.home.presentation.views.Home
+import pe.edu.upc.easyshop.features.home.presentation.home.Home
 
 
 data class Tab(

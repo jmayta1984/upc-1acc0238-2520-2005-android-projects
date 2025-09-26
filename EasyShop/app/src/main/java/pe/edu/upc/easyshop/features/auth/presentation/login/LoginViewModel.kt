@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.auth.presentation.viewmodels
+package pe.edu.upc.easyshop.features.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

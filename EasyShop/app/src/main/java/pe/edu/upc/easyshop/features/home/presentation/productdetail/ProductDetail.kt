@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.presentation.views
+package pe.edu.upc.easyshop.features.home.presentation.productdetail
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

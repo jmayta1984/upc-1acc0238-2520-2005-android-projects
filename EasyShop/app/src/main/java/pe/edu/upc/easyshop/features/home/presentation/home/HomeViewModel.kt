@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.presentation.viewmodels
+package pe.edu.upc.easyshop.features.home.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

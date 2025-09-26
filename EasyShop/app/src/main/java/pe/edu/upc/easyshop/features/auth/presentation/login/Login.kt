@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.auth.presentation.views
+package pe.edu.upc.easyshop.features.auth.presentation.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import pe.edu.upc.easyshop.R
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 import pe.edu.upc.easyshop.features.auth.presentation.di.PresentationModule.getLoginViewModel
-import pe.edu.upc.easyshop.features.auth.presentation.viewmodels.LoginViewModel
 
 @Composable
 fun Login(
@@ -114,6 +113,7 @@ fun Login(
         Button(
             onClick = {
                 viewModel.login()
+                onLogin()
             },
             modifier = Modifier
                 .fillMaxWidth()
