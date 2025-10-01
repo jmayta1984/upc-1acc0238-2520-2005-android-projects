@@ -45,17 +45,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easyshop.R
 import pe.edu.upc.easyshop.core.ui.components.CustomSpacer
 import pe.edu.upc.easyshop.core.ui.components.ProductCard
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
-import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
 
 @Composable
 fun Home(
-    viewModel: HomeViewModel,
-    onClick: () -> Unit) {
+    viewModel: HomeViewModel = hiltViewModel(),
+    onClick: (Int) -> Unit) {
 
     val categories = listOf(
         Category.All,
@@ -258,7 +258,7 @@ sealed class Category(val label: String) {
 @Composable
 fun HomePreview() {
     EasyShopTheme {
-        Home(getHomeViewModel()){}
+        Home{}
     }
 
 }

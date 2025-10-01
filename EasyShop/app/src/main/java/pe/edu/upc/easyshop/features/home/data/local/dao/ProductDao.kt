@@ -21,4 +21,7 @@ interface ProductDao {
     @Query("select * from products")
     suspend fun fetchAllProducts(): List<ProductEntity>
 
+    @Query("select * from products where id=:id")
+    suspend fun fetchProductById(id: Int): List<ProductEntity>
+
 }
